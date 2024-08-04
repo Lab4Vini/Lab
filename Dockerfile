@@ -4,7 +4,7 @@ FROM python:3.9-slim
 # Configure o diretório de trabalho
 WORKDIR /app
 
-# Copie os arquivos de requisitos
+# Copie os arquivo s de requisitos
 #COPY requirements.txt requirements.txt
 
 # Instale as dependências
