@@ -14,4 +14,4 @@ WORKDIR /app
 COPY . .
 
 # Comando para rodar a aplicação
-CMD ["python", "app.p"]
+CMD ["python", "app.py"]
