@@ -11,7 +11,7 @@ WORKDIR /app
 #RUN pip install --no-cache-dir -r reqirements.txt
 
 # Copie o restante do código
-COPY . 
+COPY . .
 
 # Comando para rodar a aplicação
 CMD ["python", "app.py"]
