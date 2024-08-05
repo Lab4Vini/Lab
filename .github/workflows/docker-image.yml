@@ -14,14 +14,10 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       
-      - name: Get short SHA
-        id: vars
-        run: echo "::set-output name=short_sha::$(git rev-parse --short $GITHUB_SHA)"
-      
       - name: Build and export
         uses: docker/build-push-action@v6
         with:
-          tags: simple-python-app:${{ steps.vars.outputs.short_sha }}
+          tags: simple-python-app:${{ github.sha }}
           outputs: type=docker,dest=/tmp/simple-python-app.tar
       
       - name: Upload artifact
@@ -29,7 +25,6 @@ jobs:
         with:
           name: simple-python-app
           path: /tmp/simple-python-app.tar
-
 
   test:
     runs-on: ubuntu-latest
@@ -49,7 +44,7 @@ jobs:
         run: |
           docker load --input /tmp/simple-python-app.tar
           docker image ls -a  
-          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image --severity HIGH,CRITICAL simple-python-app:${{ needs.build.outputs.short_sha }}
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image --severity HIGH,CRITICAL simple-python-app:${{ github.sha }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -72,5 +67,5 @@ jobs:
         run: |
           docker load --input /tmp/simple-python-app.tar
           echo "${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
-          docker tag simple-python-app:${{ needs.test.outputs.short_sha }} ${{ secrets.DOCKER_HUB_USERNAME }}/simple-python-app:${{ needs.test.outputs.short_sha }}
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/simple-python-app:${{ needs.test.outputs.short_sha }}
+          docker tag simple-python-app:${{ github.sha }} ${{ secrets.DOCKER_HUB_USERNAME }}/simple-python-app:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/simple-python-app:${{ github.sha }}
