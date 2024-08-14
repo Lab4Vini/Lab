@@ -3,4 +3,4 @@ from app import main
 def test_main(capfd):
     main()
     captured = capfd.readouterr()
-    assert captured.out == "Hello Wrlld!\n"
+    assert captured.out == "Hello World!\n"
