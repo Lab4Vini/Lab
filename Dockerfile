@@ -2,7 +2,7 @@
 FROM python:3.9-slim
 
 # Configure o diretório de trabalho
-WORKIR /app
+WORKDIR /app
 
 # Copie os arquivo s de requisitos
 #COPY requirements.txt requirements.txt 
