@@ -1,5 +1,5 @@
 # Use uma imagem base do Python
-ROM python:3.9-slim
+FROM python:3.9-slim
 
 # Configure o diretório de trabalho
 WORKDIR /app
