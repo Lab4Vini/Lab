@@ -89,8 +89,8 @@ jobs:
               {
                 "data": {
                   "attributes": {
-                    "started_at": "$STARTED_TIME",
-                    "finished_at": "$(date +%s)",
+                    "started_at": $STARTED_TIME,
+                    "finished_at": $(date +%s),
                     "git": {
                       "commit_sha": "${{ github.sha }}",
                       "repository_url": "${{ github.repository }}"
