@@ -108,6 +108,7 @@ jobs:
 
   on_failure:
     runs-on: ubuntu-latest
+    needs: [ build, test, deploy ]
     if: ${{ always() && contains(needs.*.result, 'failure') }}  # Executa se qualquer job falhar ou for cancelado
     steps:
       - name: Run on failure
