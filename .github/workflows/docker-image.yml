@@ -99,7 +99,7 @@ jobs:
                   "finished_at": '"$FINISHED_TIME"',
                   "git": {
                     "commit_sha": "'"$GITHUB_SHA"'",
-                    "repository_url": "https://github.com/Lab4Vini/Lab"
+                    "repository_url": "'"$GITHUB_SERVER_URL/$GITHUB_REPOSITORY"'"
                   },
                   "service": "'"$GITHUB_REPOSITORY"'",
                   "version": "1"
@@ -131,7 +131,7 @@ jobs:
                 "finished_at": '"$(date +%s)"',
                 "git": {
                   "commit_sha": "'"$GITHUB_SHA"'",
-                  "repository_url": "'"GITHUB_SERVER_URL/$GITHUB_REPOSITORY"'"
+                  "repository_url": "'"$GITHUB_SERVER_URL/$GITHUB_REPOSITORY"'"
                 },
                 "env": "dev",
                 "name": "'"Failure on workflow from $GITHUB_REPOSITORY "'",
