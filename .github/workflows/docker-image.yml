@@ -87,6 +87,7 @@ jobs:
           echo $STARTED_TIME
           echo $GITHUB_SHA
           echo $GITHUB_REPOSITORY
+          echo $GITHUB_SERVER
           curl -X POST "https://api.us5.datadoghq.com/api/v2/dora/deployment" \
             -H "Accept: application/json" \
             -H "Content-Type: application/json" \
@@ -130,7 +131,7 @@ jobs:
                 "finished_at": '"$(date +%s)"',
                 "git": {
                   "commit_sha": "'"$GITHUB_SHA"'",
-                  "repository_url": "'"$GITHUB_SERVER//$GITHUB_REPOSITORY"'"
+                  "repository_url": "https://github.com/Lab4Vini/Lab"
                 },
                 "env": "dev",
                 "name": "'"Failure on workflow from $GITHUB_REPOSITORY "'",
