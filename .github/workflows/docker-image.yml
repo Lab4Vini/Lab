@@ -84,7 +84,7 @@ jobs:
           curl -X POST "https://api.us5.datadoghq.com/api/v2/dora/deployment" \
               -H "Accept: application/json" \
               -H "Content-Type: application/json" \
-              -H "DD-API-KEY: " \
+              -H "DD-API-KEY: dcdf193e34d791e91adef59c511ccff6" \
               -d @- << EOF
               {
                 "data": {
