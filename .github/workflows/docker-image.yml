@@ -79,7 +79,7 @@ jobs:
 
       - name: Send info to Datadog
         env:
-          STARTED_TIME: ${{ needs.job-start.outputs.STARTED_TIME }}
+          STARTED_TIME: ${{ needs.build.outputs.STARTED_TIME }}
         run: |
           export FINISHED_TIME=$(date +%s)
           echo $FINISHED_TIME
