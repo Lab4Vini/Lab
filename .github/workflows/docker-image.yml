@@ -82,5 +82,12 @@ jobs:
           STARTED_TIME: ${{ needs.job-start.outputs.STARTED_TIME }}
         run: |
           export FINISHED_TIME=$(date +%s)
-          curl -X POST "https://api.us5.datadoghq.com/api/v2/dora/deployment" -H "Accept: application/json" -H "Content-Type: application/json" -H "DD-API-KEY: dcdf193e34d791e91adef59c511ccff6" \  
-              -d '{ "data": { "attributes": { "started_at": "'"$STARTED_TIME"'", "finished_at": "'"$FINISHED_TIME"'", "git": { "commit_sha": "'"${{ github.sha }}"'", "repository_url": "'"${{ github.repository }}"'" }, "service": "lab4vini", "version": "1" } } }'
+          echo $FINISHED_TIME
+          echo $STARTED_TIME
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          curl \
+            -X POST "https://api.us5.datadoghq.com/api/v2/dora/deployment" \ 
+            -H "Accept: application/json" -H "Content-Type: application/json" \
+            -H "DD-API-KEY: dcdf193e34d791e91adef59c511ccff6" \  
+            --data-binary '{ "data": { "attributes": { "started_at": "'"$STARTED_TIME"'", "finished_at": "'"$FINISHED_TIME"'", "git": { "commit_sha": "'"$GITHUB_SHA"'", "repository_url": "'"$GITHUB_REPOSITORY"'" }, "service": "lab4vini", "version": "1" } } }'
