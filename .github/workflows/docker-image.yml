@@ -108,7 +108,7 @@ jobs:
 
   on_failure:
     runs-on: ubuntu-latest
-    if: ${{ failure() || cancelled() }}  # Executa se qualquer job falhar ou for cancelado
+    if: ${{ always() && contains(needs.*.result, 'failure') }}  # Executa se qualquer job falhar ou for cancelado
     steps:
       - name: Run on failure
         run: echo "One of the jobs failed!"
