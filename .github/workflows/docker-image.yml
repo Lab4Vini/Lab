@@ -94,8 +94,8 @@ jobs:
             -d '{
               "data": {
                 "attributes": {
-                  "started_at": "'"$STARTED_TIME"'",
-                  "finished_at": "'"$FINISHED_TIME"'",
+                  "started_at": '"$STARTED_TIME"',
+                  "finished_at": '"$FINISHED_TIME"',
                   "git": {
                     "commit_sha": "'"$GITHUB_SHA"'",
                     "repository_url": "https://github.com/Lab4Vini/Lab"
