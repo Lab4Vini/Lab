@@ -93,7 +93,7 @@ jobs:
                     "finished_at": "$(date +%s)",
                     "git": {
                       "commit_sha": "${{ github.sha }}",
-                      "repository_url": "${{ github.server_url }}/${{ github.repository }}"
+                      "repository_url": "${{ github.repository }}"
                     },
                     "service": "lab4vini",
                     "version": "1.0"
