@@ -96,7 +96,7 @@ jobs:
                       "repository_url": "${{ github.server_url }}/${{ github.repository }}"
                     },
                     "service": "lab4vini",
-                    "version": "1.0",
+                    "version": "1.0"
                   }
                 }
               }
