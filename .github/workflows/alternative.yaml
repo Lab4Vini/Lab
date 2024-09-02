@@ -1,8 +1,14 @@
 name: Alternative Workflow
 
+# on:
+#   push:
+#     branches: [ "dev", "main" ]
+
 on:
-  push:
-    branches: [ "dev", "main" ]
+  workflow_run:
+    workflows: ["Docker Image CI"]
+    types:
+      - completed
 
 jobs:
   build:
