@@ -2,7 +2,7 @@ name: Alternative Workflow
 
 on:
   push:
-    branches: [ "dev" ]
+    branches: [ "dev", "main" ]
 
 jobs:
   build:
